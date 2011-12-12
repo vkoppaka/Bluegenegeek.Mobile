@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Your jQuery commands go here before the mobile reference
+        });
+    </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 </head>
 <body>
@@ -16,13 +21,15 @@
          <div data-role="navbar">
             <ul>
                 <li>
-                    <a href="#CodePage">Code</a>
-                    <a href="#AboutPage">About</a>
-                    <a href="#ContactPage">Contact</a>
+                    <a href="#HomePage" data-icon="home" data-iconpos="top">Home</a>
+                    <a href="#CodePage" data-icon="gear" data-iconpos="top">Code</a>
+                    <a href="#AboutPage" data-icon="info" data-iconpos="top">About</a>
+                    <a href="#ContactPage" data-icon="grid" data-iconpos="top">Contact</a>
                 </li>
             </ul>
          </div>
         <div data-role="content">
+            <a href="#CodePage" data-icon="gear" data-iconpos="top">Code</a>
             <p>
                 Lorem ipsum dolor sit amet , consectetur adipiscing elit. Donec imperdiet bibendum
                 erat, vel porttitor magna lobortis sit amet. Pellentesque lobortis fermentum libero.
