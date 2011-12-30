@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="jgFeed.js"></script>
     <script>
         $(document).ready(function () {
             // Your jQuery commands go here before the mobile reference
+            $.jGFeed('http://feeds.feedburner.com/Bluegenegeek',
+                function(feeds){
+                    //Check for errors
+                    if(!feeds){
+                        return false;
+                    }
+                    //parse through the feeds
+                    for(var i = 0 ; i< feeds.entries.length;i++){
+                        var entry = feeds.entries[i];
+                        var postHTML = "<li class='single-post'>";
+                        postHTML += "<strong>";
+                        postHTML += entry.title;
+                        postHTML += "</strong>";
+                        postHTML += "</li>";
+                        
+                        $('.blog-posts').append(postHTML);
+                        
+                        //alert(entry.title);
+                        //alert(entry.author);
+                        ///alert(entry.publishedDate);
+                        //alert(entry.content);
+                    }
+                },10);
         });
     </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
@@ -31,16 +55,10 @@
         <div data-role="content">
             
             <p>
-                Lorem ipsum dolor sit amet , consectetur adipiscing elit. Donec imperdiet bibendum
-                erat, vel porttitor magna lobortis sit amet. Pellentesque lobortis fermentum libero.
-                Aenean a nibh turpis, ut pulvinar risus. Suspendisse a placerat mi. Integer vulputate
-                odio nec tellus hendrerit venenatis bibendum purus interdum. Integer blandit laoreet
-                orci, id imperdiet massa mattis vel. Pellentesque at consequat nisi. Proin quam
-                tortor, consequat sit amet porttitor non, mollis quis turpis. Phasellus et arcu
-                erat, at sodales nisl. Etiam vestibulum lacus eu nisl egestas sit amet ullamcorper
-                turpis volutpat. Ut quis sem porta tortor pharetra rhoncus. Phasellus malesuada
-                accumsan neque eu blandit. Nullam vel neque neque, eu gravida nisi. Etiam purus
-                velit, aliquam eu aliquet eu, porttitor sed lacus.
+                
+                <ul class="blog-posts">
+                </ul>
+               
             </p>
         </div>
         <footer data-role="footer" data-position="fixed" data-theme="b">
