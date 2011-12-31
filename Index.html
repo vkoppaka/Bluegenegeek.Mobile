@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="jgFeed.js"></script>
+    <script type="text/javascript" src="date.format.js"></script>
     <script>
         $(document).ready(function () {
             // Your jQuery commands go here before the mobile reference
@@ -21,7 +22,12 @@
                         var entry = feeds.entries[i];
                         var singlePostHTML = "<li class='single-post'>";
                         singlePostHTML += "<a href='#'>";
+                        singlePostHTML += "<h3>";
                         singlePostHTML += entry.title;
+                        singlePostHTML += "</h3>";
+                        singlePostHTML += "<p>";
+                        singlePostHTML += "Published on: "+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy");
+                        singlePostHTML += "</p>";
                         singlePostHTML += "</a>";
                         singlePostHTML += "</li>";
                         
@@ -34,7 +40,7 @@
                     }
                     $('#blog-posts').listview('refresh');
 
-                },10);
+                },50);
         });
     </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
