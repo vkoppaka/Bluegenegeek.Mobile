@@ -23,7 +23,7 @@
                         
                         var singlePostHTML = "<li data-role='list-divider'>"+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy") + "</li>";
                         singlePostHTML += "<li class='single-post'>";
-                        singlePostHTML += "<a href='#'>";
+                        singlePostHTML += "<a href='"+ entry.link +"'>";
                         singlePostHTML += "<h3>";
                         singlePostHTML += entry.title;
                         singlePostHTML += "</h3>";
@@ -34,9 +34,16 @@
                             singlePostHTML += "<div class='postcategories'>";
                             singlePostHTML += "<i><strong>Posted under: </strong></i>";
                             var numberOfCategories = entry.categories.length;
+                            var categoryString = ''
                             for(var j = 0 ; j < numberOfCategories ; j++){
-                                singlePostHTML += entry.categories[j] + ",";
+                                if(categoryString == ''){
+                                    categoryString += entry.categories[j];
+                                }
+                                else{
+                                    categoryString += ', ' + entry.categories[j];
+                                }
                             }
+                            singlePostHTML += categoryString;
                             singlePostHTML += "</div>";
                         }
                         singlePostHTML += "</a>";
@@ -53,7 +60,7 @@
                     }
                     $('#blog-posts').listview('refresh');
 
-                },5);
+                },50);
         });
     </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
@@ -100,7 +107,11 @@
          </nav>
         <div data-role="content">
             <p>
-                Here you will find code samples of my blog
+                The code for this website is hosted on Github. Click the button below to fork
+                <div class="ribbon">
+                    <a href="http://github.com/subbaraokv/Bluegenegeek.Mobile" rel="me">Fork me on GitHub</a>
+                </div>
+                <div class="copyright">Fork button courtesy of <a href="http://github.com/unindented">https://github.com/unindented</a></div>
             </p>
         </div>
         <footer data-role="footer" data-position="fixed">
