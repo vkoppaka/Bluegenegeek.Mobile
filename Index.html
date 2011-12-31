@@ -17,12 +17,28 @@
                     if(!feeds){
                         return false;
                     }
+                    $blogPostList = $('#blog-posts');
                     //parse through the feeds
                     for(var i = 0 ; i< feeds.entries.length;i++){
                         var entry = feeds.entries[i];
+                       
+                        var singlePostHTML = GetFormattedPublishDateDivider(entry.publishedDate);
+                        singlePostHTML += GetPostListDetail(entry);
                         
-                        var singlePostHTML = "<li data-role='list-divider'>"+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy") + "</li>";
-                        singlePostHTML += "<li class='single-post'>";
+                        
+                        $blogPostList.append(singlePostHTML);
+                    }
+                    $blogPostList.listview('refresh');
+
+                },5);
+        });
+        
+        var GetFormattedPublishDateDivider = function(publishedDate){
+            return "<li data-role='list-divider'>"+ dateFormat(publishedDate, "dddd, mmmm dS, yyyy") + "</li>";
+        }
+        
+        var GetPostListDetail = function(entry){
+                        var singlePostHTML = "<li class='single-post'>";
                         singlePostHTML += "<a href='"+ entry.link +"'>";
                         singlePostHTML += "<h3>";
                         singlePostHTML += entry.title;
@@ -48,20 +64,8 @@
                         }
                         singlePostHTML += "</a>";
                         singlePostHTML += "</li>";
-                        
-                        $('#blog-posts').append(singlePostHTML);
-                        //alert(entry.contentSnippet);
-                        //alert(entry.categories[0]);
-                        //alert(entry.title);
-                        //alert(entry.author);
-                        ///alert(entry.publishedDate);
-                        //alert(entry.content);
-                        //alert(entry.categories.length);
-                    }
-                    $('#blog-posts').listview('refresh');
-
-                },50);
-        });
+                        return singlePostHTML;
+        }
     </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 </head>
