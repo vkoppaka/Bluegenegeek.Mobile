@@ -20,18 +20,20 @@
                     for(var i = 0 ; i< feeds.entries.length;i++){
                         var entry = feeds.entries[i];
                         var singlePostHTML = "<li class='single-post'>";
-                        singlePostHTML += "<strong>";
+                        singlePostHTML += "<a href='#'>";
                         singlePostHTML += entry.title;
-                        singlePostHTML += "</strong>";
+                        singlePostHTML += "</a>";
                         singlePostHTML += "</li>";
                         
-                        $('.blog-posts').append(singlePostHTML);
+                        $('#blog-posts').append(singlePostHTML);
                         
                         //alert(entry.title);
                         //alert(entry.author);
                         ///alert(entry.publishedDate);
                         //alert(entry.content);
                     }
+                    $('#blog-posts').listview('refresh');
+
                 },10);
         });
     </script>
@@ -54,7 +56,8 @@
         <div data-role="content">
             
             <p>
-                <ul class="blog-posts">
+                <ul id="blog-posts" data-role="listview" data-theme="d">
+                
                 </ul>
                
             </p>
