@@ -26,13 +26,12 @@
                         singlePostHTML += GetPostListDetail(entry);
                         
                         $blogPostList.append(singlePostHTML);
-                        $blogPostList.find('a:last').data('postDetail',JSON.stringify(entry.content));
+                        $blogPostList.find('a:last').data('postDetail',entry.content);
                     }
                     $blogPostList.listview('refresh');
                     
                     $blogPostList.find("a").click(function(){
                         var $this = $(this);
-                        $('#post-detail').data('postDetail',$this.data('postDetail'));
                         $('#post-detail').html($this.data('postDetail'));
                     });
 
