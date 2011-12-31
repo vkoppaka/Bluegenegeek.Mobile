@@ -3,3 +3,17 @@
     list-style:none;
     padding:5px;
 }
+
+.teaser
+{
+    padding:2px;
+    font-weight:normal;
+    font-size:12px;
+}
+
+.postcategories
+{
+    padding:2px;
+    font-weight:normal;
+    font-size:11px;
+}

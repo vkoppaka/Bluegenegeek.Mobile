@@ -27,22 +27,33 @@
                         singlePostHTML += "<h3>";
                         singlePostHTML += entry.title;
                         singlePostHTML += "</h3>";
-                        singlePostHTML += "<p>";
-                        //singlePostHTML += "Published on: "+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy");
-                        singlePostHTML += "</p>";
+                        singlePostHTML += "<div class='teaser'>";
+                        singlePostHTML += entry.contentSnippet;
+                        singlePostHTML += "</div>";
+                        if(entry.categories != null){
+                            singlePostHTML += "<div class='postcategories'>";
+                            singlePostHTML += "<i><strong>Posted under: </strong></i>";
+                            var numberOfCategories = entry.categories.length;
+                            for(var j = 0 ; j < numberOfCategories ; j++){
+                                singlePostHTML += entry.categories[j] + ",";
+                            }
+                            singlePostHTML += "</div>";
+                        }
                         singlePostHTML += "</a>";
                         singlePostHTML += "</li>";
                         
                         $('#blog-posts').append(singlePostHTML);
-                        
+                        //alert(entry.contentSnippet);
+                        //alert(entry.categories[0]);
                         //alert(entry.title);
                         //alert(entry.author);
                         ///alert(entry.publishedDate);
                         //alert(entry.content);
+                        //alert(entry.categories.length);
                     }
                     $('#blog-posts').listview('refresh');
 
-                },50);
+                },5);
         });
     </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
