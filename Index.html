@@ -20,13 +20,15 @@
                     //parse through the feeds
                     for(var i = 0 ; i< feeds.entries.length;i++){
                         var entry = feeds.entries[i];
-                        var singlePostHTML = "<li class='single-post'>";
+                        
+                        var singlePostHTML = "<li data-role='list-divider'>"+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy") + "</li>";
+                        singlePostHTML += "<li class='single-post'>";
                         singlePostHTML += "<a href='#'>";
                         singlePostHTML += "<h3>";
                         singlePostHTML += entry.title;
                         singlePostHTML += "</h3>";
                         singlePostHTML += "<p>";
-                        singlePostHTML += "Published on: "+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy");
+                        //singlePostHTML += "Published on: "+ dateFormat(entry.publishedDate, "dddd, mmmm dS, yyyy");
                         singlePostHTML += "</p>";
                         singlePostHTML += "</a>";
                         singlePostHTML += "</li>";
